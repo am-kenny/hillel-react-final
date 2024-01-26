@@ -1,0 +1,21 @@
+.name__input__form input[type="text"] {
+    font-family: 'Source Code Pro', monospace;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.name__input__form input[type="text"]::placeholder {
+    font-family: 'Source Code Pro', monospace;
+    color: #a8a59b;
+}
+
+.name__input__form input[type="submit"] {
+    font-family: 'Source Code Pro', monospace;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}

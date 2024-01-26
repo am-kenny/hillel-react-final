@@ -1,0 +1,21 @@
+.main-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.pizza__title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.pizza__title__yellow {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 20px;
+}
+
+.welcome__text {
+    margin-bottom: 10px;
+    font-weight: 500;
+}

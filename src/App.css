@@ -1,0 +1,38 @@
+.App {
+    font-family: 'Source Code Pro', monospace;
+    color: #333;
+    line-height: 1.6;
+}
+
+.app__header {
+    background-color: #e8b208;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.header__company__name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.search-container input[type="text"] {
+    font-family: 'Source Code Pro', monospace;
+    padding: 10px;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fcee89;
+}
+.search-container input[type="text"]::placeholder {
+    font-family: 'Source Code Pro', monospace;
+    color: #a8a59b;
+    font-style: italic;
+}
+
