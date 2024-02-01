@@ -7,6 +7,9 @@
 .app__header {
     background-color: #e8b208;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .header-container {
@@ -34,5 +37,14 @@
     font-family: 'Source Code Pro', monospace;
     color: #a8a59b;
     font-style: italic;
+}
+
+.user_name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    width: 120px;
+    height: 35px;
+    overflow: clip;
 }
 

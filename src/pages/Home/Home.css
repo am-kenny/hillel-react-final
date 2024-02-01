@@ -19,3 +19,17 @@
     margin-bottom: 10px;
     font-weight: 500;
 }
+
+.menu__link__container {
+    margin-top: 50px;
+}
+
+.menu__link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000000;
+    text-decoration: none;
+    background-color: #f1c40f;
+    padding: 5px 40px;
+    border-radius: 5px;
+}
