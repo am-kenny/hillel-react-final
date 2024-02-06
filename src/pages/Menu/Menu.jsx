@@ -1,15 +1,17 @@
 import {useEffect, useState} from "react";
 import './Menu.css'
 import ProductCard from "../../components/ProductCard/ProductCard.jsx";
+import {PIZZA_API} from "../../constants.js";
 
 const Menu = () => {
 
     const [products, setProducts] = useState([]);
 
+
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await fetch('https://react-fast-pizza-api.onrender.com/api/menu')
+                const res = await fetch(`${PIZZA_API}/menu`)
                 if (!res.ok) {
                     throw new Error("Failed to fetch")
                 }
@@ -24,7 +26,7 @@ const Menu = () => {
         getProducts()
 
     }, []);
-    console.log(products[0])
+
     return (
         <div className="container">
             <div>

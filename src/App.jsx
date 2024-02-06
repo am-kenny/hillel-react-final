@@ -1,16 +1,19 @@
 import './assets/reset.css'
 import './assets/fonts.css'
 import './App.css'
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
 import Menu from "./pages/Menu/Menu.jsx";
 import {UserContext} from "./context/UserInfoContext.jsx";
 import {useContext} from "react";
+import Cart from "./pages/Cart/Cart.jsx";
+import cartImage from './assets/images/cart.png'
 
 function App() {
 
     const name = useContext(UserContext)[0]
+    const navigate = useNavigate();
 
     return (
         <div className="App">
@@ -20,8 +23,12 @@ function App() {
                     <div className="search-container">
                         <input type="text" placeholder="Search for the order #" />
                     </div>
-                    <div className={"user_name"}>
-                        {name}
+
+                    <div className={'cart_and_name'}>
+                        <img className={'cart_image'} src={cartImage} alt={'Cart'} onClick={() => navigate('/cart')} />
+                        <div className={"user_name"}>
+                            {name}
+                        </div>
                     </div>
                 </div>
 
@@ -29,9 +36,10 @@ function App() {
 
 
             <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/menu' element={<Menu/>}/>
-                <Route path='*' element={<PageNotFound/>}/>
+                <Route path='/' element={<Home/>} />
+                <Route path='/menu' element={<Menu/>} />
+                <Route path='/cart' element={<Cart/>} />
+                <Route path='*' element={<PageNotFound/>} />
             </Routes>
         </div>
     )

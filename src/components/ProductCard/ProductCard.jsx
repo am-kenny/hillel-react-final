@@ -1,14 +1,22 @@
 import './ProductCard.css';
 import ProductButton from "../Button/ProductButton.jsx";
 import PropTypes from "prop-types";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../redux/slices/cartSlice.jsx";
 
 const ProductCard = ({product}) => {
     const {name, unitPrice, imageUrl, ingredients, soldOut} = product;
+
+    const dispatch = useDispatch();
 
     const capitalize = (words) => {
         return words.map((word) => {
             return word.charAt(0).toUpperCase() + word.slice(1);
         })
+    }
+
+    const handleAddToCart = () => {
+        dispatch(addToCart(product));
     }
 
     return (
@@ -23,7 +31,7 @@ const ProductCard = ({product}) => {
                     <div className="product-price">{soldOut ? 'SOLD OUT' : `€${unitPrice.toFixed(2)}`}</div>
                 </div>
                 <div className="add-to-cart-btn">
-                    {!soldOut && <ProductButton text={"ADD TO CART"}></ProductButton>}
+                    {!soldOut && <ProductButton onClick={handleAddToCart} text={"ADD TO CART"}></ProductButton>}
                 </div>
             </div>
         </div>
