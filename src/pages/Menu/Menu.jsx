@@ -1,36 +1,41 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import './Menu.css'
 import ProductCard from "../../components/ProductCard/ProductCard.jsx";
-import {PIZZA_API} from "../../constants.js";
+import {useDispatch, useSelector} from "react-redux";
+import {getMenuItems} from "../../redux/slices/menuSlice.jsx";
+import ProductCardPlaceholder from "../../components/ProductCard/ProductCardPlaceholder.jsx";
 
 const Menu = () => {
-
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
+    const {isLoading, isError, menuItems} = useSelector((state) => state.menu);
 
 
     useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const res = await fetch(`${PIZZA_API}/menu`)
-                if (!res.ok) {
-                    throw new Error("Failed to fetch")
-                }
+        dispatch(getMenuItems())
+    }, [dispatch]);
 
-                const response = await res.json()
-                setProducts(response.data)
-            } catch (e) {
-                console.error(e.message)
-            }
-        }
+    if (isError) {
+        return <div className="container">Failed to fetch</div>
+    }
 
-        getProducts()
-
-    }, []);
+    if (isLoading) {
+        return (
+            <div className="container">
+                <div>
+                        <ProductCardPlaceholder/>
+                        <ProductCardPlaceholder/>
+                        <ProductCardPlaceholder/>
+                        <ProductCardPlaceholder/>
+                        <ProductCardPlaceholder/>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="container">
             <div>
-                {products.map((product) => (
+                {!!menuItems && menuItems.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>

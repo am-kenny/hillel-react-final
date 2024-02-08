@@ -61,3 +61,25 @@
     height: fit-content;
     align-self: end;
 }
+
+.product-card.placeholder {
+    background-color: #f6f6f6;
+}
+
+.product-name.placeholder {
+    background-color: #ececec;
+    width: 120px;
+    height: 25px;
+}
+
+.product-ingredients.placeholder {
+    background-color: #ececec;
+    width: 200px;
+    height: 20px;
+}
+
+.product-price.placeholder {
+    background-color: #ececec;
+    width: 70px;
+    height: 30px;
+}
