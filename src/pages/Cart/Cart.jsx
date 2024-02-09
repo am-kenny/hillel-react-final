@@ -23,6 +23,7 @@ const Cart = () => {
     const handleOrder = () => {
         if (items.length > 0) {
             console.log("Order placed!\n", items)
+            navigate('/order/new')
         } else {
             console.log("Cart is empty!")
         }
@@ -30,7 +31,7 @@ const Cart = () => {
 
     return (
         <div className={'cart__container'}>
-            <button className={'button__back'} onClick={() => navigate(-1)}>← Back to menu</button>
+            <button className={'button__back'} onClick={() => navigate(-1)}>← Back</button>
 
             <h1 className={'cart__title'}>Your cart, {name? name : 'guest'}</h1>
 

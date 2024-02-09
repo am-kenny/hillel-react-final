@@ -1,0 +1,40 @@
+.input__component__container {
+    margin-bottom: 20px;
+
+}
+
+.input__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 700px;
+}
+
+.input_field {
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+}
+
+.input_field:focus {
+    outline: none;
+    border: 1px solid #000;
+}
+
+.checkbox__container {
+    width: 525px;
+    margin-bottom: 30px;
+}
+
+.checkbox__input {
+    margin-right: 10px;
+    transform: scale(1.2)
+
+}
+
+
+.checkbox__label {
+    font-weight: bold;
+}
