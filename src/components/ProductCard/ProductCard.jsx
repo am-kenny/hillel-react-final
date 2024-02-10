@@ -3,17 +3,12 @@ import ProductButton from "../Button/ProductButton.jsx";
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
 import {addToCart} from "../../redux/slices/cartSlice.jsx";
+import {capitalizeIngredients} from "../../constants.js";
 
 const ProductCard = ({product}) => {
     const {name, unitPrice, imageUrl, ingredients, soldOut} = product;
 
     const dispatch = useDispatch();
-
-    const capitalize = (words) => {
-        return words.map((word) => {
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        })
-    }
 
     const handleAddToCart = () => {
         dispatch(addToCart(product));
@@ -27,7 +22,7 @@ const ProductCard = ({product}) => {
             <div className="product-info">
                 <div className={"product-info-text"}>
                     <h3 className="product-name">{name}</h3>
-                    <p className="product-ingredients">{capitalize(ingredients).join(', ')}</p>
+                    <p className="product-ingredients">{capitalizeIngredients(ingredients).join(', ')}</p>
                     <div className="product-price">{soldOut ? 'SOLD OUT' : `€${unitPrice.toFixed(2)}`}</div>
                 </div>
                 <div className="add-to-cart-btn">

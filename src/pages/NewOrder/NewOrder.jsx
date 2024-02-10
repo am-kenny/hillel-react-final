@@ -1,5 +1,5 @@
 import {Controller, useForm} from "react-hook-form";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {UserContext} from "../../context/UserInfoContext.jsx";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validationSchema} from "../../validationSchema.js";
@@ -8,16 +8,21 @@ import CheckboxInput from "../../components/Input/CheckboxInput.jsx";
 import ProductButton from "../../components/Button/ProductButton.jsx";
 import {useSelector} from "react-redux";
 import './NewOrder.css';
+import {useNavigate} from "react-router-dom";
+import {PIZZA_API} from "../../constants.js";
 
 const NewOrder = () => {
     const name = useContext(UserContext)[0]
-    const {totalPrice} = useSelector((state) => state.cart);
+    const {totalPrice, items} = useSelector((state) => state.cart);
+    const navigate = useNavigate();
+    const [postError, setPostError] = useState(false);
+
 
     const {
         register,
         handleSubmit,
         control,
-        watch,
+        watch
     } = useForm({
         defaultValues: {
             name: name,
@@ -32,13 +37,40 @@ const NewOrder = () => {
     const withPriority = watch('withPriority');
     const totalOrderPrice = withPriority ? totalPrice + 8 : totalPrice;
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = async (data) => {
+
+        try{
+            const response = await fetch(`${PIZZA_API}/order`, {
+                method: "POST",
+                body: JSON.stringify(
+                    {
+                        customer: data.name,
+                        phone: data.phone,
+                        address: data.address,
+                        cart: items,
+                        position: "",
+                        priority: data.withPriority,
+                    }),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const res = await response.json();
+            if  (res.status === 'success') {
+                navigate(`/order/${res.data.id}`)
+            } else {
+                setPostError(true);
+            }
+        } catch (error) {
+            setPostError(true);
+        }
+
+
     }
 
     return (
-        <div className={'order__container'}>
-            <h2 className={'order__title'}>{"Ready to order? Let's go!"}</h2>
+        <div className={'new_order__container'}>
+            <h2 className={'new_order__title'}>{"Ready to order? Let's go!"}</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Controller
                     name='name'
@@ -91,9 +123,10 @@ const NewOrder = () => {
                                             label={"Do you want to give your order priority?"}/>
                     }/>
 
-                <input  type="hidden" {...register('totalPrice')} value={totalOrderPrice}/>
+                <input type="hidden" {...register('totalPrice')} value={totalOrderPrice}/>
 
                 <ProductButton type="submit" text={`ORDER NOW FOR €${totalOrderPrice.toFixed(2)}`}/>
+                {postError && <p className={'error-message'}>Something went wrong. Please try again later.</p>}
             </form>
         </div>
     );

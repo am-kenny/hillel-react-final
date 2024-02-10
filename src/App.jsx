@@ -10,6 +10,7 @@ import {useContext} from "react";
 import Cart from "./pages/Cart/Cart.jsx";
 import cartImage from './assets/images/cart.png'
 import NewOrder from "./pages/NewOrder/NewOrder.jsx";
+import Order from "./pages/Order/Order.jsx";
 
 function App() {
 
@@ -40,8 +41,9 @@ function App() {
                 <Route path='/' element={<Home/>} />
                 <Route path='/menu' element={<Menu/>} />
                 <Route path='/cart' element={<Cart/>} />
-                <Route path='*' element={<PageNotFound/>} />
                 <Route path='order/new' element={<NewOrder/>} />
+                <Route path='/order/:id' element={<Order/>} />
+                <Route path='*' element={<PageNotFound/>} />
             </Routes>
         </div>
     )

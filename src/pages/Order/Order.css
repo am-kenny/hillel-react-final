@@ -1,0 +1,79 @@
+.order__container {
+    width: 900px;
+    color: #333;
+    margin: 0 auto;
+    padding: 2rem;
+
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.order-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.order-status span {
+    display: inline-block;
+    padding: 0.1rem 1rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.priority {
+    background-color: #FF4136;
+}
+
+.preparing {
+    background-color: #2ECC40;
+}
+
+.order-timer {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+}
+
+.order-accent-container {
+    background-color: rgba(231,229,228,0.9);
+    border-radius: 5px;
+}
+
+.order-timer__minutes-left {
+    font-weight: bold;
+}
+
+.order-timer__estimated {
+    color: #a2a2a2;
+}
+
+.order-summary {
+    margin-top: 40px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.order-summary p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.order-summary__final-price {
+    font-weight: bold;
+}
+
+.prioritize__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}

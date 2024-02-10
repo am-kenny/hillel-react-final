@@ -22,7 +22,6 @@ const Cart = () => {
 
     const handleOrder = () => {
         if (items.length > 0) {
-            console.log("Order placed!\n", items)
             navigate('/order/new')
         } else {
             console.log("Cart is empty!")
