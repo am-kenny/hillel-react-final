@@ -23,11 +23,11 @@ function App() {
                 <div className="header-container">
                     <h1 className={"header__company__name"}>PIZZA DAY</h1>
                     <div className="search-container">
-                        <input type="text" placeholder="Search for the order #" />
+                        <input type="text" placeholder="Search for the order #"/>
                     </div>
 
                     <div className={'cart_and_name'}>
-                        <img className={'cart_image'} src={cartImage} alt={'Cart'} onClick={() => navigate('/cart')} />
+                        <img className={'cart_image'} src={cartImage} alt={'Cart'} onClick={() => navigate('/cart')}/>
                         <div className={"user_name"}>
                             {name}
                         </div>
@@ -36,16 +36,18 @@ function App() {
 
             </header>
 
-
-            <Routes>
-                <Route path='/' element={<Home/>} />
-                <Route path='/menu' element={<Menu/>} />
-                <Route path='/cart' element={<Cart/>} />
-                <Route path='order/new' element={<NewOrder/>} />
-                <Route path='/order/:id' element={<Order/>} />
-                <Route path='*' element={<PageNotFound/>} />
-            </Routes>
+            <div className="content__container">
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/menu' element={<Menu/>}/>
+                    <Route path='/cart' element={<Cart/>}/>
+                    <Route path='order/new' element={<NewOrder/>}/>
+                    <Route path='/order/:id' element={<Order/>}/>
+                    <Route path='*' element={<PageNotFound/>}/>
+                </Routes>
+            </div>
         </div>
     )
 }
+
 export default App
